@@ -44,8 +44,8 @@ def validate(root: ET.Element) -> list[str]:
     remotes = {r.get("name"): r.get("fetch") for r in root.findall("remote")}
     if len(remotes) != len(root.findall("remote")):
         errors.append("Duplicate remote")
-    if remotes.get("cmdr-chara") != "https://github.com/cmdr-chara/":
-        errors.append("Owned remote must resolve to cmdr-chara")
+    if remotes.get("noamtu123") != "https://github.com/noamtu123/":
+        errors.append("Owned remote must resolve to noamtu123")
     defaults = root.findall("default")
     if len(defaults) != 1:
         return errors + ["Exactly one default is required"]
@@ -64,7 +64,7 @@ def validate(root: ET.Element) -> list[str]:
             errors.append(f"Unresolvable project: {path}")
         if path in OWNED:
             seen_owned.add(path)
-            if project.get("name") != OWNED[path] or remote != "cmdr-chara":
+            if project.get("name") != OWNED[path] or remote != "noamtu123":
                 errors.append(f"Wrong owned project identity: {path}")
             if not SHA.fullmatch(revision):
                 errors.append(f"Unpinned owned project: {path}")
