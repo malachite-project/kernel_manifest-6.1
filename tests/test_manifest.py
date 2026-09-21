@@ -22,7 +22,7 @@ class ManifestTests(unittest.TestCase):
         self.assertTrue(verify.validate(self.root))
 
     def test_rejects_abandoned_owner(self):
-        self.root.find("remote[@name='noamtu123']").set("fetch", "https://github.com/mt6878-devs/")
+        self.root.find("remote[@name='malachite-project']").set("fetch", "https://github.com/mt6878-devs/")
         self.assertTrue(verify.validate(self.root))
 
     def test_rejects_missing_project(self):
